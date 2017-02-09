@@ -1,7 +1,16 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
 
+  def add_to_cart
+    @product = Product.find(params[:id])
+      redirect_to :back
+      flash[:notice] = "test"
+  end
 
+  def show
+    @product = Product.find(params[:id])
+    
+  end
 
   def index
     @products =Product.all
