@@ -3,9 +3,13 @@ class ProductsController < ApplicationController
 
   def add_to_cart
     @product = Product.find(params[:id])
-    current_cart.add_product_to_cart(@product)
-      redirect_to :back
+    if current_cart.products.inside?(@product)
+      current_cart.add_product_to_cart(@product)
       flash[:notice] = "success"
+    else
+      flash[:warning] = "你的购物车内已有此物品"
+      redirect_to :back
+
   end
 
   def show
