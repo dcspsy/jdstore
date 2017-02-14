@@ -6,6 +6,7 @@ class CartItemsController < ApplicationController
     @cart_item.destroy
     flash[:warming]= "成功将 #{@product.title} 从购物车删除!"
     redirect_to :back
+  end
 
   def update
     @cart = current_cart
